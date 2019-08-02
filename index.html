@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,50 @@
     <script src="jQuery.js"></script>
     <script src="client.js"></script>
 </head>
+
 <body>
-    
+    <div>
+        <h1 class="standardText">Salary Calculator</h1>
+    </div>
+    <div>
+        <h3 class="standardText">Add Employee</h3>
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+        <input type="text" placeholder="ID">
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Annual Salary">
+        <button class="js-btn-submit">Submit</button>
+    </div>
+    <div>
+        <h3 class="standardText">Employees</h3>
+        <table>
+            <thead>
+                <th class="standardText js-input-firstName">First Name</th>
+                <th class="standardText js-input-lastName">Last Name</th>
+                <th class="standardText js-input-ID">ID</th>
+                <th class="standardText js-input-title">Title</th>
+                <th class="standardText js-input-annualSalary">Annual Salary</th>
+                <th></th>
+            </thead>
+            <tbody class = "tBody">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div>
+        <h3 class = "standardText" id= "totalMonthlyCost" style = "text-align: right">Total Monthly Cost: </h3>
+    </div>
 </body>
+
 </html>
