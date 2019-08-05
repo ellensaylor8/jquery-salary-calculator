@@ -38,15 +38,13 @@ let employees = [
 ]
 
 
-
-
-
 $(document).ready(onReady);
 
 function onReady() {
     render();
     sumSalaries();
     $('.js-btn-submit').on('click', onClickAddEmployee);
+    $('.deleteButton').on('click', deleteEmployee)
 }
 
 function onClickAddEmployee() {
@@ -54,16 +52,14 @@ function onClickAddEmployee() {
     const newEmployee = {
         firstName: $('.js-input-firstName').val(),
         lastName: $('.js-input-lastName').val(),
-        ID: parseInt($('.js-input-ID').val()),
+        ID: $('.js-input-ID').val(),
         title: $('.js-input-title').val(),
-        annualSalary: $('.js-input-annualSalary').val(),
+        annualSalary: parseInt($('.js-input-annualSalary').val()),
     }
     console.log(newEmployee);
-    // $('.js-demo').append(`<div>${JSON.stringify(newCreature)}</div>`)
     employees.push(newEmployee);
-
-    
     render();
+    sumSalaries();
 }
 
 function addCommas(nStr)
@@ -82,7 +78,7 @@ function addCommas(nStr)
 function render() {
    
     const tableElement = $('.tBody');
-    let deleteButton = '<button>Delete</button>'
+    let deleteButton = '<button'+ ' class = "deleteButton"'+ '>Delete</button>'
 
     tableElement.empty();
     for (let i = 0; i < employees.length; i++) {
@@ -99,6 +95,21 @@ function render() {
     }
 }
 
-function sumSalaries(){
+let totalMonthlySalary = 0;
 
+function sumSalaries(){
+for (let i=0; i < employees.length; i++){
+    employeeSalary = employees[i].annualSalary;
+    totalMonthlySalary += employeeSalary;
+}
+console.log(totalMonthlySalary)
+$('#totalMonthlyCost').text('Total Monthly Cost: '+'$'+addCommas(totalMonthlySalary));
+if (totalMonthlySalary>20000){
+    $('#totalMonthlyCost').parent().css("background-color", "red");
+    $('#totalMonthlyCost').css("color", "white");
+}
+}
+
+function deleteEmployee(){
+    $(this).parent().parent().remove()
 }
