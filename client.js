@@ -128,7 +128,9 @@ function clearInputs(){
 
 function deleteEmployee() {
     $(this).parent().parent().remove()
-    // const salaryChild = $(this).parent().parent('nth-child(5)')
-    // console.log(salaryChild);
-    // totalMonthlySalary-= salaryChild
+    const salaryChild = $(this).parent().parent().children().eq(4).text();
+    const salaryChildNumber = Number(salaryChild.replace(/[^0-9.-]+/g,""));
+    console.log(salaryChildNumber);
+    totalMonthlySalary-= salaryChildNumber
+    $('#totalMonthlyCost').text('Total Monthly Cost: ' + '$' + addCommas(totalMonthlySalary));
 }
